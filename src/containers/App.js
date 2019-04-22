@@ -14,7 +14,8 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/users')
+    var myrequest = new Request('https://jsonplaceholder.typicode.com/users',{mod:'no-cors'});
+    fetch(myrequest)
     .then(response => response.json())
     .then(users => this.setState({robots:users}));
     //this.setState({robots:robots})
