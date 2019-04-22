@@ -16,11 +16,11 @@ class App extends Component {
 
   componentDidMount(){
     //fetch way
-    fetch('https://jsonplaceholder.typicode.com/users',{mod:'cors'})
+    /*fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
-    .then(users => this.setState({robots:users}));
+    .then(users => this.setState({robots:users}));*/
     //file way
-    //this.setState({robots:robots})
+    this.setState({robots:robots})
   }
   
   onSearchChange=(event) => {
