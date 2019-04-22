@@ -2,6 +2,7 @@ import React , {Component} from 'react';
 import CardList from '../components/CardList'; 
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import {robots} from '../Robots.js';
 import './App.css';
 
 class App extends Component {
@@ -14,17 +15,16 @@ class App extends Component {
   }
 
   componentDidMount(){
-    var myrequest = new Request('https://jsonplaceholder.typicode.com/users',{mod:'no-cors'});
-    fetch(myrequest)
+    //fetch way
+    /*fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
-    .then(users => this.setState({robots:users}));
-    //this.setState({robots:robots})
+    .then(users => this.setState({robots:users}));*/
+    //file way
+    this.setState({robots:robots})
   }
   
   onSearchChange=(event) => {
     this.setState({searchfield:event.target.value});
-    
-    //console.log(filterRobots);
   }
 
   render(){
