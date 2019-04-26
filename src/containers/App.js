@@ -1,4 +1,4 @@
-import React , {Component} from 'react';
+import React , {PureComponent} from 'react';
 import CardList from '../components/CardList'; 
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
@@ -6,7 +6,7 @@ import ErrorBoundry from '../components/ErrorBoundry';
 import {robots} from '../Robots.js';
 import './App.css';
 
-class App extends Component {
+class App extends PureComponent {
   constructor(){
     super()
     this.state = {

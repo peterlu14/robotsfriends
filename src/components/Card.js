@@ -1,7 +1,7 @@
-import React from 'react';
+import React , { memo }from 'react';
 
 
-const Card = ({name,email,id}) => {
+const Card = memo(({name,email,id}) => {
 	
 	return (
 		<div className='bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
@@ -12,6 +12,6 @@ const Card = ({name,email,id}) => {
 		  </div>
 		</div>
 		);
-}
+})
 
 export default Card;

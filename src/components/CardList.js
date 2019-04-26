@@ -1,14 +1,7 @@
-import React from 'react';
+import React , { memo }from 'react';
 import Card from './Card';
 
-const CardList = ({robots}) => {
-		//ErrorBoundry Test
-		/*
-		if(true){
-			throw new Error('Nooooo');
-		}
-		*/
-
+const CardList = memo(({robots}) => {
 		return(
 		<div>
 		{
@@ -25,6 +18,6 @@ const CardList = ({robots}) => {
 		}
 		</div>
 	);
-}
+})
 
 export default CardList;
