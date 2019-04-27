@@ -1,13 +1,13 @@
-import React , {PureComponent} from 'react';
-import { connect } from 'react-redux';
-import CardList from '../components/CardList'; 
-import SearchBox from '../components/SearchBox';
-import Scroll from '../components/Scroll';
-import ErrorBoundry from '../components/ErrorBoundry';
+import React, { PureComponent } from "react";
+import { connect } from "react-redux";
+import CardList from "../components/CardList";
+import SearchBox from "../components/SearchBox";
+import Scroll from "../components/Scroll";
+import ErrorBoundry from "../components/ErrorBoundry";
 //import {robots} from '../Robots.js';
-import './App.css';
+import "./App.css";
 
-import  { setSearchField, requestRobots } from '../actions';
+import { setSearchField, requestRobots } from "../actions";
 
 const mapStateToProps = state => {
   return {
@@ -15,42 +15,44 @@ const mapStateToProps = state => {
     robots: state.requestRobots.robots,
     isPending: state.requestRobots.isPending,
     error: state.requestRobots.error
-  }
-}
+  };
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return{
-    onSearchChange: (event) => dispatch(setSearchField(event.target.value)),
+const mapDispatchToProps = dispatch => {
+  return {
+    onSearchChange: event => dispatch(setSearchField(event.target.value)),
     onRequestRobots: () => dispatch(requestRobots())
-  }
-}
+  };
+};
 
 //@connect(mapStateToProps, mapDispatchToProps)
 class App extends PureComponent {
-
-  componentDidMount(){
-   this.props.onRequestRobots();
+  componentDidMount() {
+    this.props.onRequestRobots();
   }
 
-  render(){
-    const { searchField, onSearchChange, robots, isPending} = this.props;
-    const filterRobots = (robots.filter(robot=> {
+  render() {
+    const { searchField, onSearchChange, robots, isPending } = this.props;
+    const filterRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
-    }))
-    return isPending ?
-    <h1>Loading</h1> :
-    (
-      <div className='tc'>
-      <h1 className='f1'>robotfriend</h1>
-      <SearchBox searchChange={onSearchChange}/>
-      <Scroll>
-        <ErrorBoundry>
-          <CardList robots={filterRobots}/>
-        </ErrorBoundry>
-      </Scroll>
+    });
+    return isPending ? (
+      <h1>Loading</h1>
+    ) : (
+      <div className="tc">
+        <h1 className="f1">robotfriend</h1>
+        <SearchBox searchChange={onSearchChange} />
+        <Scroll>
+          <ErrorBoundry>
+            <CardList robots={filterRobots} />
+          </ErrorBoundry>
+        </Scroll>
       </div>
     );
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
