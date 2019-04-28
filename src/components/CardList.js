@@ -1,30 +1,21 @@
-import React from 'react';
-import Card from './Card';
+import React, { memo } from "react";
+import Card from "./Card";
 
-const CardList = ({robots}) => {
-		//ErrorBoundry Test
-		/*
-		if(true){
-			throw new Error('Nooooo');
-		}
-		*/
-
-		return(
-		<div>
-		{
-		  robots.map((user,i) => {
-		    return (
-			    <Card 
-			      key={i} 
-			      id={robots[i].id} 
-			      name={robots[i].name} 
-		          email={robots[i].email}
-			    />
-		    );
-	      })
-		}
-		</div>
-	);
-}
+const CardList = memo(({ robots }) => {
+  return (
+    <div>
+      {robots.map((user, i) => {
+        return (
+          <Card
+            key={i}
+            id={robots[i].id}
+            name={robots[i].name}
+            email={robots[i].email}
+          />
+        );
+      })}
+    </div>
+  );
+});
 
 export default CardList;
